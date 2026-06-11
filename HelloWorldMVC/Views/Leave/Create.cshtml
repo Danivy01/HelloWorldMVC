@@ -1,0 +1,29 @@
+﻿@model HelloWorldMVC.Models.Leave
+
+@{
+    ViewData["Title"] = "Create Leave";
+}
+
+<h1>Create Leave</h1>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label>Employee Name</label>
+        <input asp-for="EmployeeName"/>
+    </div>
+    <div class="mb-3">
+        <label>Leave Type</label>
+        <input asp-for="LeaveType" />
+    </div>
+    <div class="mb-3">
+        <label>Start Date</label>
+        <input asp-for="StartDate" type="date"/>
+    </div>
+    <div class="mb-3">
+        <label>End Date</label>
+        <input asp-for="EndDate" type="date" />
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+<a asp-action="Index">Back to List</a>

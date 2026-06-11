@@ -1,0 +1,36 @@
+﻿@model List<HelloWorldMVC.Models.Leave>
+
+@{
+    ViewData["Title"] = "Leave List";
+}
+
+<h1>Leave List</h1>
+
+<a asp-action="Create" asp-controller="Leave" class="btn btn-primary mb-3">Create</a>
+<table class="table-bordered table-hover" style="width: 100%">
+    <tr>
+        <th>Employee</th>
+        <th>Leave Type</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var leave in Model)
+    {
+        <tr>
+            <td>@leave.EmployeeName</td>
+            <td>@leave.LeaveType</td>
+            <td>@leave.StartDate.ToShortDateString()</td>
+            <td>@leave.EndDate.ToShortDateString()</td>
+            <td>@leave.Status</td>
+            <td class="hstack justify-content-center gap-2">
+                <a asp-action="Edit" asp-controller="Leave" asp-route-id="@leave.ID" class="btn btn-sm btn-primary">Edit</a>
+                <form asp-action="Delete" asp-controller="Leave" method="post">
+                    <input type="hidden" name="ID" value="@leave.ID"/>
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
